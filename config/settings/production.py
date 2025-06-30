@@ -46,6 +46,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # DRF Production Config
-core.REST_FRAMEWORK["DEFAULT_PERMISSION_CLASSES"] = [
+REST_FRAMEWORK["DEFAULT_PERMISSION_CLASSES"] = [
     "rest_framework.permissions.IsAuthenticatedOrReadOnly",
 ]
