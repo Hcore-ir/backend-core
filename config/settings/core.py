@@ -20,6 +20,9 @@ INSTALLED_APPS = [
     "drf_yasg",
     "django_filters",
     "rest_framework_simplejwt",
+    "tinymce",
+    # apps
+    "apps.facilities",
 ]
 
 MIDDLEWARE = [
