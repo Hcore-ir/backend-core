@@ -100,7 +100,7 @@ class MedicalFacility(models.Model):
     type = models.ForeignKey(
         MedicalFacilityType,
         on_delete=models.CASCADE,
-        related_name="facilities",
+        related_name="facilities_type",
         verbose_name="Facility Type",
     )
 
@@ -109,7 +109,7 @@ class MedicalFacility(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name="facilities",
+        related_name="facilities_sub_type",
         verbose_name="Facility Subtype",
     )
 
@@ -118,7 +118,7 @@ class MedicalFacility(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name="facilities",
+        related_name="facilities_ownership",
         verbose_name="Ownership Type",
     )
 
