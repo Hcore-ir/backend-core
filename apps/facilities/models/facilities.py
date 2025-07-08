@@ -94,6 +94,7 @@ class MedicalFacility(models.Model):
     """
     Represents an individual medical facility.
     """
+
     slug = models.SlugField()
     name = models.CharField(max_length=255, verbose_name="Facility Name")
 

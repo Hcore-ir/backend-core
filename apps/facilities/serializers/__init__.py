@@ -2,7 +2,7 @@ from .facilities import (
     MedicalFacilitySerializer,
     MedicalFacilityTypeSerializer,
     MedicalFacilitySubTypeSerializer,
-    MedicalFacilityOwnershipTypeSerializer
+    MedicalFacilityOwnershipTypeSerializer,
 )
 
 __all__ = [

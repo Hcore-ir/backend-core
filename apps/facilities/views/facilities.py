@@ -45,17 +45,21 @@ from apps.facilities.serializers import (
     MedicalFacilityOwnershipTypeSerializer,
 )
 
+
 class MedicalFacilityTypeViewSet(ReadOnlyListViewSet):
     queryset = MedicalFacilityType.objects.all()
     serializer_class = MedicalFacilityTypeSerializer
+
 
 class MedicalFacilitySubTypeViewSet(ReadOnlyListViewSet):
     queryset = MedicalFacilitySubType.objects.all()
     serializer_class = MedicalFacilitySubTypeSerializer
 
+
 class MedicalFacilityOwnershipTypeViewSet(ReadOnlyListViewSet):
     queryset = MedicalFacilityOwnershipType.objects.all()
     serializer_class = MedicalFacilityOwnershipTypeSerializer
+
 
 class MedicalFacilityViewSet(BaseCRUDViewSet):
     queryset = MedicalFacility.objects.all()

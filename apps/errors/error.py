@@ -56,6 +56,7 @@ from django.utils.translation import gettext_lazy as _
 from apps.errors import errors_en
 from apps.errors import errors_fa
 
+
 def init():
     global errors_holder
     errors_holder = ErrorHolder()
@@ -63,9 +64,11 @@ def init():
     # register English Errors
     # register Farsi Errors
 
+
 class ErrorHolder:
     def __init__(self):
         self.__error_maps = defaultdict(dict)
+
     def registerError(
         self,
         event: str,
@@ -74,30 +77,21 @@ class ErrorHolder:
     ):
         self.__error_maps[event][lang] = error_dict
 
-    def get(
-        self,
-        event: str,
-        lang: str,
-        error: str
-    ):
+    def get(self, event: str, lang: str, error: str):
         return self.__error_maps[event][lang][error]
 
-    def extendsError(
-        self,
-        event: str,
-        lang: str,
-        error_dict: str
-    ):
+    def extendsError(self, event: str, lang: str, error_dict: str):
         if event not in self.__error_maps:
             self.__error_maps[event][lang] = {}
 
         return self.__error_maps[event][lang].update(error_dict)
 
+
 def getText(
-    event : str,
+    event: str,
     error: str,
     *args,
-    lang:str = os.getenv("LANG_ERROR", "fa"),
+    lang: str = os.getenv("LANG_ERROR", "fa"),
 ):
     try:
         global errors_holder

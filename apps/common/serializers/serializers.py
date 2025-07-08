@@ -43,7 +43,7 @@ class BaseModelSerializer(serializers.ModelSerializer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._inject_nested_serializer()
-    
+
     def _inject_nested_serializer(self):
         nested_serializers = getattr(self.Meta, "nested_serializers", {})
 
