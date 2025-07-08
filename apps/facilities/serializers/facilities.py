@@ -36,6 +36,32 @@ from apps.facilities.models import (
     MedicalFacilityOwnershipType,
 )
 
+class MedicalFacilityTypeSerializer(BaseModelSerializer):
+    """
+    """
+
+    class Meta:
+        model = MedicalFacilityType
+        slug_fields = ["title"]
+        fields = ["slug", "title"]
+
+class MedicalFacilitySubTypeSerializer(BaseModelSerializer):
+    """
+    """
+
+    class Meta:
+        model = MedicalFacilitySubType
+        slug_fields = ["title"]
+        fields = ["slug", "title"]
+
+class MedicalFacilityOwnershipTypeSerializer(BaseModelSerializer):
+    """
+    """
+
+    class Meta:
+        model = MedicalFacilityOwnershipType
+        slug_fields = ["title"]
+        fields = ["slug", "title"]
 
 class MedicalFacilitySerializer(BaseModelSerializer):
     """
@@ -45,8 +71,16 @@ class MedicalFacilitySerializer(BaseModelSerializer):
 
     class Meta:
         model = MedicalFacility
-        read_only_fields = ["created_at", "updated_at", "slug"]
+        read_only_fields = ["created_at", "updated_at"]
         slug_fields = ["name", "city"]
+
+        # ForeignKey Modules
+        nested_serializers = {
+            "type" : MedicalFacilityTypeSerializer,
+            "subtype": MedicalFacilitySubTypeSerializer,
+            "ownership":MedicalFacilityOwnershipTypeSerializer,
+        }
+
         fields = [
             "name",
             "type",
