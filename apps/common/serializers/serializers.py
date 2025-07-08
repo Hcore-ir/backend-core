@@ -40,6 +40,25 @@ class BaseModelSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(read_only=True)
     updated_at = serializers.DateTimeField(read_only=True)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._inject_nested_serializer()
+    
+    def _inject_nested_serializer(self):
+        nested_serializers = getattr(self.Meta, "nested_serializers", {})
+
+        request = self.context.get("request", None)
+        is_read = not request or request.method in ("GET", "HEAD", "OPTIONS")
+
+        for field_name, nested_serializer in nested_serializers.items():
+            model_field = self.Meta.model._meta.get_field(field_name)
+            if is_read:
+                self.fields[field_name] = nested_serializer(read_only=True)
+            else:
+                self.fields[field_name] = serializers.PrimaryKeyRelatedField(
+                    queryset=model_field.related_model.objects.all()
+                )
+
     def _pop_m2m_fields(self, validated_data):
         """
         Extract ManyToMany fields from validated_data.
