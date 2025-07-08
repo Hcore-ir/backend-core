@@ -128,3 +128,22 @@ class ReadOnlyListRetrieveViewSet(
     """
 
     pass
+
+class ReadOnlyListViewSet(
+    mixins.ListModelMixin,
+    BaseParsedViewSet,
+):
+    """
+    ViewSet that supports listing and retrieving objects (read-only).
+
+    Endpoints:
+    - GET /api/resource/        -> list all (with pagination/filtering)
+
+    No write (POST/PUT/DELETE) actions allowed.
+
+    Use Cases:
+    - Public APIs
+    - Dropdowns, reference tables, readonly data
+    """
+
+    pass

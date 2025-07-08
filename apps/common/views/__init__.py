@@ -4,6 +4,7 @@ from .viewsets import (
     CreateOnlyViewSet,
     RetrieveOnlyViewSet,
     ReadOnlyListRetrieveViewSet,
+    ReadOnlyListViewSet
 )
 
 __all__ = [
@@ -12,4 +13,5 @@ __all__ = [
     "CreateOnlyViewSet",
     "RetrieveOnlyViewSet",
     "ReadOnlyListRetrieveViewSet",
+    "ReadOnlyListViewSet"
 ]
