@@ -31,15 +31,31 @@ It leverages:
 License: GPLv2
 """
 
-from apps.common.views import BaseCRUDViewSet
+from apps.common.views import BaseCRUDViewSet, ReadOnlyListViewSet
 from apps.facilities.models import (
     MedicalFacility,
     MedicalFacilityType,
     MedicalFacilitySubType,
     MedicalFacilityOwnershipType,
 )
-from apps.facilities.serializers import MedicalFacilitySerializer
+from apps.facilities.serializers import (
+    MedicalFacilitySerializer,
+    MedicalFacilityTypeSerializer,
+    MedicalFacilitySubTypeSerializer,
+    MedicalFacilityOwnershipTypeSerializer,
+)
 
+class MedicalFacilityTypeViewSet(ReadOnlyListViewSet):
+    queryset = MedicalFacilityType.objects.all()
+    serializer_class = MedicalFacilityTypeSerializer
+
+class MedicalFacilitySubTypeViewSet(ReadOnlyListViewSet):
+    queryset = MedicalFacilitySubType.objects.all()
+    serializer_class = MedicalFacilitySubTypeSerializer
+
+class MedicalFacilityOwnershipTypeViewSet(ReadOnlyListViewSet):
+    queryset = MedicalFacilityOwnershipType.objects.all()
+    serializer_class = MedicalFacilityOwnershipTypeSerializer
 
 class MedicalFacilityViewSet(BaseCRUDViewSet):
     queryset = MedicalFacility.objects.all()
