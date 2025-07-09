@@ -43,6 +43,10 @@ class MedicalFacilityType(models.Model):
     slug = models.SlugField(unique=True)
     title = models.CharField(max_length=255, verbose_name="Facility Type Title")
 
+    class Meta:
+        verbose_name = "Facility Type"
+        verbose_name_plural = "Facility Types"
+
     def __str__(self):
         return self.title
 
@@ -61,8 +65,8 @@ class MedicalFacilitySubType(models.Model):
     title = models.CharField(max_length=255, verbose_name="Facility Subtype Title")
 
     class Meta:
-        verbose_name = "Facility Subtype (Specialty)"
-        verbose_name_plural = "Facility Subtypes (Specialties)"
+        verbose_name = "Facility SubType"
+        verbose_name_plural = "Facility SubTypes"
 
     def __str__(self):
         return self.title
@@ -83,8 +87,8 @@ class MedicalFacilityOwnershipType(models.Model):
     title = models.CharField(max_length=255, verbose_name="Ownership Type")
 
     class Meta:
-        verbose_name = "Ownership Type"
-        verbose_name_plural = "Ownership Types"
+        verbose_name = "Facility Ownership Type"
+        verbose_name_plural = "Facility Ownership Types"
 
     def __str__(self):
         return self.title
